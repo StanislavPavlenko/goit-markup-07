@@ -120,6 +120,14 @@ ul {
 .header-address-list {
   display: none;
 }
+
+.menu-open {
+  background-color: transparent;
+  border-color: transparent;
+}
+.icon-menu-open {
+  fill: var(--logo-color);
+}
 /* Hero-------- */
 
 .section-hero {
