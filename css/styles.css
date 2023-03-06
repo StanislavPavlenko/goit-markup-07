@@ -59,7 +59,9 @@ img {
   width: 100%;
   height: auto;
 }
-
+.no-scroll {
+  overflow: hidden;
+}
 p,
 h1,
 h2,
@@ -122,11 +124,103 @@ ul {
 }
 
 .menu-open {
-  background-color: transparent;
   border-color: transparent;
 }
 .icon-menu-open {
-  fill: var(--logo-color);
+  content: "";
+  fill: var(--basic-color);
+}
+.mob-menu {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  background-color: var(--white-color);
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.mob-menu > .container {
+  max-width: 367px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu-close {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 16px;
+  padding: 0;
+  font-size: 0;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--accent-color);
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menu-close:hover {
+  background-color: var(--btn-hover-color);
+  color: var(--white-color);
+}
+.modal-icon {
+}
+.mob-menu-list {
+}
+.mob-menu-item:not(:last-child) {
+  margin-bottom: 40px;
+}
+.mob-menu-link {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: calc(40 / 36);
+  letter-spacing: 0.02em;
+  color: var(--basic-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mob-menu-link:hover,
+.mob-menu-link:focus {
+  color: var(--btn-hover-color);
+}
+.link {
+}
+.carrent {
+}
+.text-color {
+}
+.mob-menu-address {
+}
+.mob-menu-address-list {
+  margin-bottom: 48px;
+}
+.mob-menu-address-tel-item {
+  margin-bottom: 40px;
+}
+.mob-menu-address-tel-link {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: calc(40 / 36);
+  color: var(--logo-color);
+  font-style: normal;
+  white-space: nowrap;
+}
+.mob-menu-address-item {
+}
+.mob-menu-address-link {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  letter-spacing: 0.02em;
+  color: var(--minor-color);
+  font-style: normal;
+}
+.mob-menu-icon-list {
+  display: flex;
+  justify-content: center;
+  gap: 56px;
 }
 /* Hero-------- */
 
@@ -522,6 +616,7 @@ ul {
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
 }
 
 .btn-item:last-child {
@@ -839,7 +934,7 @@ textarea {
 
   .header-list {
     display: flex;
-    margin-left: 76px;
+    margin-left: 120px;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
@@ -883,41 +978,38 @@ textarea {
   .header-link.text-color {
     color: var(--btn-hover-color);
   }
-  /* Adressss */
 
-  .header-address {
+  .mob-menu {
+    display: none;
   }
+
+  .menu-open {
+    display: none;
+  }
+  /* Adressss */
 
   .header-address-link:hover,
   .header-address-link:focus {
     color: var(--btn-hover-color);
   }
   .header-address-link {
-    padding-top: 24px;
-    padding-bottom: 24px;
     display: block;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
+    font-size: 12px;
+    line-height: calc(16 / 12);
+    letter-spacing: 0.04em;
     color: var(--minor-color);
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-
   .header-address-list {
+    padding-top: 24px;
+    padding-bottom: 10px;
     display: flex;
+    flex-direction: column;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
-  }
-
-  .header-address-item {
-    margin-right: 40px;
-  }
-
-  .header-address-item:last-child {
-    margin: 0;
   }
 
   .section-features-item {
@@ -1015,6 +1107,46 @@ textarea {
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1158px;
+  }
+  .header-list {
+    margin-left: 76px;
+  }
+
+  .header-address {
+  }
+
+  .header-address-link:hover,
+  .header-address-link:focus {
+    color: var(--btn-hover-color);
+  }
+  .header-address-link {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--minor-color);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header-address-list {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .header-address-item {
+    margin-right: 40px;
+  }
+
+  .header-address-item:last-child {
+    margin: 0;
   }
 
   .section-hero {
